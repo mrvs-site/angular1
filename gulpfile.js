@@ -112,7 +112,7 @@ gulp.task('serve', function(cb) {
     runSequence('clean:tmp', ['lint:scripts'], ['start:client'],
         'watch', cb);
 });
-
+/*
 gulp.task('serve:prod', function() {
     $.connect.server({
         root: [yeoman.dist],
@@ -120,15 +120,15 @@ gulp.task('serve:prod', function() {
         port: 8080
     });
 });
+*/
 
-/*
-gulp.task('serveprod', function() {
+gulp.task('serve:prod', function() {
   connect.server({
     root: [your_project_path],
     port: process.env.PORT || 5000, // localhost:5000
     livereload: false
   });
-});*/
+});
 
 gulp.task('test', ['start:server:test'], function() {
     var testToFiles = paths.testRequire.concat(paths.scripts, paths.test);
