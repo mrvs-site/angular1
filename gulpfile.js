@@ -72,9 +72,9 @@ gulp.task('start:client', ['start:server', 'styles'], function() {
 gulp.task('start:server', function() {
     $.connect.server({
         root: [yeoman.app, '.tmp'],
-        livereload: true,
+        livereload: false,
+		port: process.env.PORT || 5000, // localhost:5000
         // Change this to '0.0.0.0' to access the server from outside.
-        port: 8080
     });
 });
 
