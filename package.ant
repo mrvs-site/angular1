@@ -1,16 +1,8 @@
 {
   "name": "angular1",
-  "version": "1.1.0",
-  "description": "teste angular",
-  "engines": {
-    "node": "6.10.2"
-  },
-  "main": "gulpfile.js",
-  "scripts": {
-    "start": "gulp serve"
-  },
-  "dependencies": {
-   "gulp": "^3.9.0",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
     "gulp-autoprefixer": "2.3.1",
     "gulp-cache": "^0.2.10",
@@ -35,14 +27,7 @@
     "open": "0.0.5",
     "jshint-stylish": "^1.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mrvs-site/angular1"
-  },
-  "keywords": [
-    "node",
-    "heroku"
-  ],
-  "license": "MIT"
+  "engines": {
+    "node": ">=0.10.0"
+  }
 }
-
