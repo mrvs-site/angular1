@@ -66,7 +66,7 @@ gulp.task('clean:tmp', function(cb) {
 });
 
 gulp.task('start:client', ['start:server', 'styles'], function() {
-    openURL('https://mrvs.herokuapp.com/');
+    openURL('http://localhost:9000');
 });
 
 gulp.task('start:server', function() {
@@ -74,7 +74,7 @@ gulp.task('start:server', function() {
         root: [yeoman.app, '.tmp'],
         livereload: true,
         // Change this to '0.0.0.0' to access the server from outside.
-        port: 8080
+        port: 9000
     });
 });
 
@@ -117,7 +117,7 @@ gulp.task('serve:prod', function() {
     $.connect.server({
         root: [yeoman.dist],
         livereload: true,
-        port: 8080
+        port: 9000
     });
 });
 
