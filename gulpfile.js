@@ -8,6 +8,7 @@ var lazypipe = require('lazypipe');
 var rimraf = require('rimraf');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
+var cssmin = require('gulp-cssmin');
 
 var yeoman = {
     app: require('./bower.json').appPath || 'app',
@@ -51,6 +52,13 @@ var styles = lazypipe()
 // Tasks //
 ///////////
 
+gulp.task('css', function() {
+    gulp.src('css/*.css')
+        .pipe(cssmin({ showLog: true, target: '../', keepBreaks: true }))
+        .pipe(gulp.dest('css/min'));
+});
+
+
 gulp.task('styles', function() {
     return gulp.src(paths.styles)
         .pipe(styles());
@@ -69,11 +77,24 @@ gulp.task('start:client', ['start:server', 'styles'], function() {
     openURL('https://mrvs.herokuapp.com/');
 });
 
+gulp.task('start:client', ['start:dev', 'styles'], function() {
+    openURL('localhost:5000/');
+});
+
 gulp.task('start:server', function() {
     $.connect.server({
         root: [yeoman.app, '.tmp'],
         livereload: false,
-		port: process.env.PORT || 5000, // localhost:5000
+        port: process.env.PORT || 5000, // localhost:5000
+        // Change this to '0.0.0.0' to access the server from outside.
+    });
+});
+
+gulp.task('start:dev', function() {
+    $.connect.server({
+        root: [yeoman.app, '.tmp'],
+        livereload: false,
+        port: 5000, // localhost:5000
         // Change this to '0.0.0.0' to access the server from outside.
     });
 });
@@ -112,6 +133,11 @@ gulp.task('serve', function(cb) {
     runSequence('clean:tmp', ['lint:scripts'], ['start:client'],
         'watch', cb);
 });
+
+gulp.task('dev', function(cb) {
+    runSequence('clean:tmp', ['lint:scripts'], ['start:client'],
+        'watch', cb);
+});
 /*
 gulp.task('serve:prod', function() {
     $.connect.server({
@@ -123,11 +149,11 @@ gulp.task('serve:prod', function() {
 */
 
 gulp.task('serve:prod', function() {
-  connect.server({
-    root: [yeoman.dist],
-    port: process.env.PORT || 5000, // localhost:5000
-    livereload: false
-  });
+    connect.server({
+        root: [yeoman.dist],
+        port: process.env.PORT || 5000, // localhost:5000
+        livereload: false
+    });
 });
 
 gulp.task('test', ['start:server:test'], function() {
@@ -152,6 +178,7 @@ gulp.task('bower', function() {
 ///////////
 // Build //
 ///////////
+
 
 gulp.task('clean:dist', function(cb) {
     rimraf('./dist', cb);
