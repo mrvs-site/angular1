@@ -90,14 +90,14 @@ gulp.task('start:server', function() {
     });
 });
 
-gulp.task('start:dev', function() {
-    $.connect.server({
-        root: [yeoman.app, '.tmp'],
-        livereload: false,
-        port: 5000, // localhost:5000
-        // Change this to '0.0.0.0' to access the server from outside.
-    });
-});
+// gulp.task('start:dev', function() {
+//     $.connect.server({
+//         root: [yeoman.app, '.tmp'],
+//         livereload: false,
+//         port: 5000, // localhost:5000
+//         // Change this to '0.0.0.0' to access the server from outside.
+//     });
+// });
 
 gulp.task('start:server:test', function() {
     $.connect.server({
@@ -134,10 +134,10 @@ gulp.task('serve', function(cb) {
         'watch', cb);
 });
 
-gulp.task('dev', function(cb) {
-    runSequence('clean:tmp', ['lint:scripts'], ['start:client'],
-        'watch', cb);
-});
+// gulp.task('dev', function(cb) {
+//     runSequence('clean:tmp', ['lint:scripts'], ['start:client'],
+//         'watch', cb);
+// });
 /*
 gulp.task('serve:prod', function() {
     $.connect.server({
@@ -148,13 +148,13 @@ gulp.task('serve:prod', function() {
 });
 */
 
-gulp.task('serve:prod', function() {
-    connect.server({
-        root: [yeoman.dist],
-        port: process.env.PORT || 5000, // localhost:5000
-        livereload: false
-    });
-});
+// gulp.task('serve:prod', function() {
+//     connect.server({
+//         root: [yeoman.dist],
+//         port: process.env.PORT || 5000, // localhost:5000
+//         livereload: false
+//     });
+// });
 
 gulp.task('test', ['start:server:test'], function() {
     var testToFiles = paths.testRequire.concat(paths.scripts, paths.test);
