@@ -52,11 +52,11 @@ var styles = lazypipe()
 // Tasks //
 ///////////
 
-gulp.task('css', function() {
-    gulp.src('css/*.css')
-        .pipe(cssmin({ showLog: true, target: '../', keepBreaks: true }))
-        .pipe(gulp.dest('css/min'));
-});
+// gulp.task('css', function() {
+//     gulp.src('css/*.css')
+//         .pipe(cssmin({ showLog: true, target: '../', keepBreaks: true }))
+//         .pipe(gulp.dest('css/min'));
+// });
 
 
 gulp.task('styles', function() {
