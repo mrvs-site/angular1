@@ -77,9 +77,9 @@ gulp.task('start:client', ['start:server', 'styles'], function() {
     openURL('https://mrvs.herokuapp.com/');
 });
 
-gulp.task('start:client', ['start:dev', 'styles'], function() {
-    openURL('localhost:5000/');
-});
+// gulp.task('start:client', ['start:dev', 'styles'], function() {
+//     openURL('localhost:5000/');
+// });
 
 gulp.task('start:server', function() {
     $.connect.server({
